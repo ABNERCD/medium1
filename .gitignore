@@ -1,0 +1,6 @@
+# Dependencias (se pueden reinstalar)
+node_modules/
+
+# Archivos de construcción (se generan automáticamente)
+dist/
+```build/
