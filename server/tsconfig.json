@@ -1,44 +1,14 @@
 {
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
-    // File Layout
-    // "rootDir": "./src",
-    // "outDir": "./dist",
-
-    // Environment Settings
-    // See also https://aka.ms/tsconfig/module
-    "module": "nodenext",
-    "target": "esnext",
-    "types": [],
-    // For nodejs:
-    // "lib": ["esnext"],
-    // "types": ["node"],
-    // and npm install -D @types/node
-
-    // Other Outputs
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
-
-    // Stricter Typechecking Options
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
-
-    // Style Options
-    // "noImplicitReturns": true,
-    // "noImplicitOverride": true,
-    // "noUnusedLocals": true,
-    // "noUnusedParameters": true,
-    // "noFallthroughCasesInSwitch": true,
-    // "noPropertyAccessFromIndexSignature": true,
-
-    // Recommended Options
-    "strict": true,
-    "jsx": "react-jsx",
-    "verbatimModuleSyntax": true,
-    "isolatedModules": true,
-    "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
-    "skipLibCheck": true,
-  }
+  "target": "ES2020",                 /* Especifica la versión de ECMAScript de destino */
+  "module": "CommonJS",                /* Especifica la generación de código de módulo: 'CommonJS' es el estándar para Node.js */
+  "moduleResolution": "node",          /* Cómo el compilador busca un módulo */
+  "outDir": "./dist",                  /* Directorio de salida para los archivos .js compilados */
+  "rootDir": "./src",                  /* Directorio raíz de los archivos de entrada .ts */
+  "esModuleInterop": true,             /* Permite la interoperabilidad con módulos CommonJS */
+  "strict": true,                      /* Habilita todas las opciones de tipo estricto */
+  "skipLibCheck": true,                /* Omite la comprobación de tipos de los archivos de declaración */
+  "forceConsistentCasingInFileNames": true /* Asegura que las mayúsculas y minúsculas en los nombres de archivo sean consistentes */
+}
 }

@@ -1,6 +1,8 @@
+# Secretos
+.env
+
 # Dependencias (se pueden reinstalar)
 node_modules/
 
-# Archivos de construcción (se generan automáticamente)
+# Archivos de construcción
 dist/
-```build/
