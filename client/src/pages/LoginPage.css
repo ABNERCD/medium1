@@ -1,0 +1,156 @@
+/* ==========================================================================
+   Estilos para LoginPage.css
+   ========================================================================== */
+
+/* 1. Fondo general de la página de login
+   -------------------------------------------------------------------------- */
+.login-page-container {
+  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d); /* Un gradiente oscuro y vibrante */
+  background-size: 400% 400%; /* Permite la animación del gradiente */
+  animation: backgroundGradient 15s ease infinite; /* Animación suave del fondo */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente formal */
+}
+
+@keyframes backgroundGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 2. Estilos para la tarjeta del formulario (Login Card)
+   -------------------------------------------------------------------------- */
+.login-card {
+  background: rgba(255, 255, 255, 0.08); /* Fondo semi-transparente blanco */
+  border-radius: 15px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); /* Sombra para profundidad */
+  backdrop-filter: blur(10px); /* Efecto de desenfoque de cristal */
+  -webkit-backdrop-filter: blur(10px); /* Compatibilidad con Safari */
+  border: 1px solid rgba(255, 255, 255, 0.18); /* Borde sutil */
+  color: #e0e0e0; /* Color de texto general claro */
+  animation-duration: 0.8s; /* Duración de la animación de entrada */
+}
+
+.login-brand {
+  font-size: 2.8rem;
+  font-weight: 700;
+  /* Nuevo gradiente, diferente al del header, más oscuro y profundo */
+  background: linear-gradient(90deg, #8b4dff, #4776e6); /* Púrpura a azul */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(139, 77, 255, 0.4); /* Sombra para que destaque */
+}
+
+/* 3. Estilos para los campos de formulario e inputs
+   -------------------------------------------------------------------------- */
+.form-label {
+  color: #c0c0c0; /* Un gris claro para las etiquetas */
+  font-weight: 500;
+}
+
+.login-input {
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo del input semi-transparente */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff; /* Texto del input blanco */
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.login-input::placeholder {
+  color: rgba(255, 255, 255, 0.5); /* Placeholder más claro */
+}
+
+.login-input:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: #4776e6; /* Borde azul al enfocar */
+  box-shadow: 0 0 0 0.25rem rgba(71, 118, 230, 0.25); /* Sombra de enfoque */
+  color: #ffffff;
+}
+
+/* 4. Estilos para los botones
+   -------------------------------------------------------------------------- */
+.login-button {
+  background: linear-gradient(45deg, #4776e6, #8b4dff); /* Gradiente para el botón de login */
+  border: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden; /* Para el efecto de brillo */
+}
+
+.login-button:hover {
+  transform: translateY(-2px); /* Pequeño levantamiento */
+  box-shadow: 0 6px 20px rgba(71, 118, 230, 0.4);
+}
+
+.login-button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(71, 118, 230, 0.3);
+}
+
+/* Efecto de brillo en el botón al pasar el ratón */
+.login-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.5s ease;
+  transform: skewX(-20deg);
+}
+
+.login-button:hover::after {
+  left: 100%;
+}
+
+
+.register-button {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: transparent;
+  color: #c0c0c0;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.register-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: #8b4dff; /* Borde más distintivo al pasar el ratón */
+  color: #ffffff;
+}
+
+/* 5. Otros elementos
+   -------------------------------------------------------------------------- */
+.login-link {
+  color: #a0a0a0;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.login-link:hover {
+  color: #8b4dff; /* Morado al pasar el ratón */
+  text-decoration: underline;
+}
+
+.login-divider {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Clases de animación de Animate.css (asegúrate de tenerlo instalado) */
+/* Si no tienes Animate.css, puedes instalarlo: npm install animate.css --save */
+/* Y luego importarlo en tu main.tsx o App.tsx: import 'animate.css'; */
+.animate__animated {
+  visibility: visible !important; /* Asegura que las animaciones sean visibles */
+}
+
+/* Animaciones específicas para los elementos */
+.animate__fadeInUp { animation-duration: 0.7s; }
+.animate__fadeInLeft { animation-duration: 0.6s; }
+.animate__fadeInRight { animation-duration: 0.6s; }
+.animate__fadeIn { animation-duration: 0.5s; }
+.animate__shakeX { animation-duration: 0.7s; }

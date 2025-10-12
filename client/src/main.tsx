@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
-import 'bootstrap/dist/css/bootstrap.min.css'; // <-- LÍNEA AÑADIDA
+import 'bootswatch/dist/darkly/bootstrap.min.css';
+import 'animate.css'; // <-- LÍNEA AÑADIDA
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

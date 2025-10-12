@@ -1,0 +1,82 @@
+/* ==========================================================================
+   Estilos para Header.css
+   ========================================================================== */
+
+/* 1. Estilo principal para la barra de navegación (efecto cristal)
+   -------------------------------------------------------------------------- */
+/* Esta clase combina las propiedades que mencionaste: 'bg-opacity-75' y 'backdrop-blur-md'.
+  Usamos RGBA para el fondo oscuro con 75% de opacidad y backdrop-filter para el desenfoque.
+*/
+.navbar.bg-opacity-75.backdrop-blur-md {
+  background-color: rgba(25, 28, 32, 0.75) !important; /* Un color oscuro casi negro con transparencia */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* Para compatibilidad con Safari */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important; /* Borde sutil */
+}
+
+/* 2. Gradiente para el nombre de la marca (MEDIUM)
+   -------------------------------------------------------------------------- */
+/*
+  La clase '.brand-gradient' aplica un fondo de gradiente y luego lo "recorta"
+  para que solo sea visible a través del texto.
+*/
+.brand-gradient {
+  background: linear-gradient(90deg, #0d6efd, #6f42c1); /* Un gradiente de azul a morado */
+  -webkit-background-clip: text; /* Para navegadores WebKit (Chrome, Safari) */
+  background-clip: text;
+  color: transparent;
+  transition: filter 0.3s ease;
+}
+
+.brand-gradient:hover {
+  filter: brightness(1.2); /* Hace el gradiente un poco más brillante al pasar el ratón */
+}
+
+/* 3. Clases de utilidad para animaciones y transiciones
+   -------------------------------------------------------------------------- */
+/*
+  Define la transición suave que mencionaste en la clase 'transition-all-03s'.
+*/
+.transition-all-03s {
+  transition: all 0.3s ease-in-out;
+}
+
+/*
+  Define el efecto de escala al pasar el ratón para 'hover-scale-105'.
+*/
+.hover-scale-105:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px -5px rgba(0, 123, 255, 0.4); /* Sombra azulada en hover */
+}
+
+/*
+  Animación de entrada para 'header-animated'.
+  Hace que la barra de navegación aparezca deslizándose desde arriba.
+*/
+.header-animated {
+  animation: slideInDown 0.7s ease-out forwards;
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 4. Estilos adicionales para mejorar la apariencia (Opcional)
+   -------------------------------------------------------------------------- */
+.navbar-dark .nav-link {
+  color: rgba(255, 255, 255, 0.75); /* Color ligeramente más tenue para los enlaces */
+  transition: color 0.3s ease;
+}
+
+.navbar-dark .nav-link:hover,
+.navbar-dark .nav-link:focus {
+  color: #ffffff; /* Los enlaces se vuelven blancos al pasar el ratón */
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5); /* Un ligero brillo */
+}
