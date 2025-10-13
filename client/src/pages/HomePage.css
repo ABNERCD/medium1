@@ -1,0 +1,209 @@
+/* === FUENTES Y VARIABLES === */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --primary-color: #4f46e5;
+  --primary-hover: #6a5af9;
+  --primary-gradient: linear-gradient(90deg, #4776e6, #8b4dff);
+  --background-dark: #111827;
+  --background-light: #1f2937;
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --border-color: #374151;
+}
+
+/* === ESTRUCTURA GENERAL === */
+.homepage-wrapper {
+  background-color: var(--background-dark);
+  font-family: 'Inter', sans-serif;
+  color: var(--text-primary);
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+@media (min-width: 992px) {
+  .section-title {
+    font-size: 3rem;
+  }
+}
+
+/* === SECCIÓN PRINCIPAL (HERO) === */
+.hero-section {
+  padding: 8rem 1rem;
+  background-image: radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.2), transparent 40%);
+}
+
+.homepage-logo-container {
+  max-width: 400px;
+  margin: 0 auto 2.5rem auto;
+}
+
+.homepage-logo-image {
+  width: 100%;
+  height: auto;
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 35px rgba(139, 77, 255, 0.4);
+  animation: pulse-glow-hero 5s infinite ease-in-out;
+  transition: transform 0.4s ease;
+}
+
+.homepage-logo-image:hover {
+  transform: scale(1.05);
+  animation-play-state: paused;
+}
+
+@keyframes pulse-glow-hero {
+  0%   { transform: scale(1); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 35px rgba(139, 77, 255, 0.4); }
+  50%  { transform: scale(1.03); box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 50px rgba(71, 118, 230, 0.6); }
+  100% { transform: scale(1); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 35px rgba(139, 77, 255, 0.4); }
+}
+
+.hero-button {
+  background: var(--primary-color);
+  border: none;
+  font-weight: 600;
+  border-radius: 50px; /* Botón redondeado */
+  padding: 0.8rem 2.5rem;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 4px 20px rgba(79, 70, 229, 0.3);
+}
+
+.hero-button:hover, .hero-button:focus {
+  background-color: var(--primary-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px -3px rgba(79, 70, 229, 0.4);
+}
+
+/* === SECCIÓN DE CARACTERÍSTICAS (FEATURES) === */
+.features-section {
+  padding: 6rem 1rem;
+  background-color: #0d121d;
+}
+
+.feature-card {
+  background: rgba(31, 41, 55, 0.6);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  padding: 2.5rem 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(79, 70, 229, 0.15), transparent 40%);
+  transition: opacity 0.5s ease;
+  opacity: 0;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--primary-hover);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.feature-card:hover::before {
+  opacity: 1;
+}
+
+.feature-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: var(--primary-gradient);
+  color: white;
+  margin-bottom: 1.5rem !important;
+  box-shadow: 0 0 25px rgba(139, 77, 255, 0.4);
+}
+
+/* === MODIFICADORES DE ESTILO PARA CADA TARJETA === */
+
+/* --- Tarjeta 1: Seguridad --- */
+.feature-card--security .feature-icon {
+  background: linear-gradient(90deg, #08AEEA, #2AF598);
+  box-shadow: 0 0 25px rgba(42, 245, 152, 0.4);
+}
+.feature-card--security:hover {
+  border-color: #2AF598;
+}
+.feature-card--security:hover::before {
+  background: radial-gradient(circle, rgba(42, 245, 152, 0.15), transparent 40%);
+}
+
+/* --- Tarjeta 2: Colaboración --- */
+.feature-card--collaboration .feature-icon {
+  background: linear-gradient(90deg, #F4D03F, #16A085);
+  box-shadow: 0 0 25px rgba(244, 208, 63, 0.4);
+}
+.feature-card--collaboration:hover {
+  border-color: #F4D03F;
+}
+.feature-card--collaboration:hover::before {
+  background: radial-gradient(circle, rgba(244, 208, 63, 0.15), transparent 40%);
+}
+
+/* --- Tarjeta 3: Global --- */
+.feature-card--global .feature-icon {
+  background: linear-gradient(90deg, #D4145A, #FBB03B);
+  box-shadow: 0 0 25px rgba(212, 20, 90, 0.4);
+}
+.feature-card--global:hover {
+  border-color: #D4145A;
+}
+.feature-card--global:hover::before {
+  background: radial-gradient(circle, rgba(212, 20, 90, 0.15), transparent 40%);
+}
+
+
+/* === SECCIÓN DE PREGUNTAS FRECUENTES (FAQ) === */
+.faq-section {
+  padding: 6rem 1rem;
+}
+
+.faq-accordion .accordion-item {
+  background-color: var(--background-light);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem !important;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.faq-accordion .accordion-button {
+  background-color: var(--background-light);
+  color: var(--text-primary);
+  font-weight: 600;
+  border: none;
+}
+
+.faq-accordion .accordion-button:not(.collapsed) {
+  background: var(--background-light);
+  color: var(--primary-hover);
+  box-shadow: inset 0 -2px 0 var(--primary-color);
+}
+
+.faq-accordion .accordion-button:focus {
+  box-shadow: 0 0 0 0.25rem rgba(79, 70, 229, 0.25);
+}
+
+.faq-accordion .accordion-button::after {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+.faq-accordion .accordion-body {
+  background-color: var(--background-dark);
+  color: var(--text-secondary);
+}
+

@@ -1,14 +1,37 @@
-/* ==========================================================================
-   Estilos para LoginPage.css
-   ========================================================================== */
+/* === FUENTES Y VARIABLES === */
+/* 1. Importamos la fuente 'Inter' para el cuerpo y 'Exo 2' para el título de la marca */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Exo+2:wght@800&display=swap');
 
-/* 1. Fondo general de la página de login
-   -------------------------------------------------------------------------- */
-.login-page-container {
-  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d); /* Un gradiente oscuro y vibrante */
-  background-size: 400% 400%; /* Permite la animación del gradiente */
-  animation: backgroundGradient 15s ease infinite; /* Animación suave del fondo */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente formal */
+:root {
+  --primary-gradient: linear-gradient(45deg, #4776e6, #8b4dff);
+  --primary-hover: #4338ca;
+  --background-dark: #111827;
+  --background-light: #1f2937;
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --danger-color: #ef4444;
+}
+
+/* === ESTRUCTURA GENERAL === */
+.login-wrapper {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background-dark);
+  min-height: 100vh;
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+/* === COLUMNA IZQUIERDA (BRANDING CON FONDO ANIMADO) === */
+.login-branding-col {
+  padding: 3rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+  background-size: 400% 400%;
+  animation: backgroundGradient 20s ease infinite;
 }
 
 @keyframes backgroundGradient {
@@ -17,81 +40,160 @@
   100% { background-position: 0% 50%; }
 }
 
-/* 2. Estilos para la tarjeta del formulario (Login Card)
-   -------------------------------------------------------------------------- */
-.login-card {
-  background: rgba(255, 255, 255, 0.08); /* Fondo semi-transparente blanco */
-  border-radius: 15px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3); /* Sombra para profundidad */
-  backdrop-filter: blur(10px); /* Efecto de desenfoque de cristal */
-  -webkit-backdrop-filter: blur(10px); /* Compatibilidad con Safari */
-  border: 1px solid rgba(255, 255, 255, 0.18); /* Borde sutil */
-  color: #e0e0e0; /* Color de texto general claro */
-  animation-duration: 0.8s; /* Duración de la animación de entrada */
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(17, 24, 39, 0.7); /* Overlay un poco más oscuro */
+  z-index: 1;
 }
 
-.login-brand {
-  font-size: 2.8rem;
-  font-weight: 700;
-  /* Nuevo gradiente, diferente al del header, más oscuro y profundo */
-  background: linear-gradient(90deg, #8b4dff, #4776e6); /* Púrpura a azul */
+.branding-content {
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+/* === ESTILOS PARA EL LOGO DE IMAGEN EN LA COLUMNA DE BRANDING === */
+.branding-logo-container {
+  max-width: 300px;
+  width: 100%;
+  margin: 0 auto 1.5rem auto;
+}
+
+.branding-logo-image {
+  width: 100%;
+  height: auto;
+  border-radius: 1.5rem;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+  animation: branding-logo-float 6s infinite ease-in-out;
+  transition: transform 0.4s ease;
+}
+
+.branding-logo-image:hover {
+  transform: scale(1.03);
+  animation-play-state: paused;
+}
+
+@keyframes branding-logo-float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* 2. MEJORA DEL TÍTULO: Nueva fuente y estilo refinado */
+.brand-title {
+  font-family: 'Exo 2', sans-serif; /* Usamos la nueva fuente */
+  font-weight: 800;
+  letter-spacing: 5px;
+  background: linear-gradient(90deg, #ffffff, #d1d5db); /* Gradiente más sutil */
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 0 0 10px rgba(139, 77, 255, 0.4); /* Sombra para que destaque */
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
 }
 
-/* 3. Estilos para los campos de formulario e inputs
-   -------------------------------------------------------------------------- */
+.brand-subtitle {
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* === COLUMNA DERECHA (FORMULARIO CON EFECTO CRISTAL) === */
+.login-form-col {
+  padding: 2rem;
+  background-color: var(--background-dark);
+}
+
+.login-form-container {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(31, 41, 55, 0.6);
+  border: 1px solid var(--border-color);
+  border-radius: 1rem;
+  padding: 2.5rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* === ESTILOS PARA EL LOGO DENTRO DEL FORMULARIO === */
+.login-form-container .medium-logo-svg {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 1rem;
+  opacity: 0;
+  animation: fadeInLogo 1s ease-out 0.4s forwards;
+}
+
+@keyframes fadeInLogo {
+  from { opacity: 0; transform: scale(0.8) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.form-title {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* === ESTILOS DE FORMULARIO === */
 .form-label {
-  color: #c0c0c0; /* Un gris claro para las etiquetas */
+  font-size: 0.875rem;
+  color: var(--text-secondary);
   font-weight: 500;
 }
 
 .login-input {
-  background-color: rgba(255, 255, 255, 0.1); /* Fondo del input semi-transparente */
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #ffffff; /* Texto del input blanco */
-  padding: 0.8rem 1rem;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-
-.login-input::placeholder {
-  color: rgba(255, 255, 255, 0.5); /* Placeholder más claro */
+  background-color: var(--background-light);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  transition: all 0.2s ease-in-out;
+  font-size: 1rem;
 }
 
 .login-input:focus {
-  background-color: rgba(255, 255, 255, 0.15);
-  border-color: #4776e6; /* Borde azul al enfocar */
-  box-shadow: 0 0 0 0.25rem rgba(71, 118, 230, 0.25); /* Sombra de enfoque */
-  color: #ffffff;
+  background-color: var(--background-light);
+  border-color: var(--primary-hover);
+  box-shadow: 0 0 0 3px rgba(67, 56, 202, 0.4);
+  color: var(--text-primary);
 }
 
-/* 4. Estilos para los botones
-   -------------------------------------------------------------------------- */
+.password-toggle-btn {
+  border: 1px solid var(--border-color);
+  border-left: none;
+  background-color: var(--background-light);
+  color: var(--text-secondary);
+}
+.input-group:focus-within .password-toggle-btn {
+  border-color: var(--primary-hover);
+}
+.input-group .form-control { border-right: none; }
+.input-group .form-control:focus { border-right: none; }
+
+/* === BOTÓN Y ENLACES === */
 .login-button {
-  background: linear-gradient(45deg, #4776e6, #8b4dff); /* Gradiente para el botón de login */
+  background: var(--primary-gradient);
   border: none;
   font-weight: 600;
-  letter-spacing: 0.5px;
-  border-radius: 8px;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(139, 77, 255, 0.2);
   position: relative;
-  overflow: hidden; /* Para el efecto de brillo */
+  overflow: hidden;
 }
-
-.login-button:hover {
-  transform: translateY(-2px); /* Pequeño levantamiento */
-  box-shadow: 0 6px 20px rgba(71, 118, 230, 0.4);
+.login-button:hover, .login-button:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(71, 118, 230, 0.4);
 }
-
-.login-button:active {
-  transform: translateY(0);
-  box-shadow: 0 3px 10px rgba(71, 118, 230, 0.3);
+.login-button:disabled {
+  background: var(--background-light);
+  transform: none;
+  box-shadow: none;
 }
-
-/* Efecto de brillo en el botón al pasar el ratón */
 .login-button::after {
   content: '';
   position: absolute;
@@ -99,58 +201,61 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
   transition: all 0.5s ease;
   transform: skewX(-20deg);
 }
-
 .login-button:hover::after {
   left: 100%;
 }
 
-
-.register-button {
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background-color: transparent;
-  color: #c0c0c0;
-  font-weight: 500;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-
-.register-button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: #8b4dff; /* Borde más distintivo al pasar el ratón */
-  color: #ffffff;
-}
-
-/* 5. Otros elementos
-   -------------------------------------------------------------------------- */
 .login-link {
-  color: #a0a0a0;
+  color: #8b4dff;
   text-decoration: none;
-  transition: color 0.3s ease;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
 }
-
 .login-link:hover {
-  color: #8b4dff; /* Morado al pasar el ratón */
+  color: #a69ef2;
   text-decoration: underline;
 }
 
-.login-divider {
-  border-color: rgba(255, 255, 255, 0.1);
+/* === ALERTA DE ERROR === */
+.alert-danger {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: rgba(248, 113, 113, 1);
+  font-size: 0.9rem;
+  border-color: rgba(239, 68, 68, 0.3);
 }
 
-/* Clases de animación de Animate.css (asegúrate de tenerlo instalado) */
-/* Si no tienes Animate.css, puedes instalarlo: npm install animate.css --save */
-/* Y luego importarlo en tu main.tsx o App.tsx: import 'animate.css'; */
-.animate__animated {
-  visibility: visible !important; /* Asegura que las animaciones sean visibles */
+/* === RESPONSIVIDAD === */
+@media (max-width: 991.98px) {
+  .login-form-col {
+    padding: 2rem 1.5rem;
+    min-height: 100vh;
+  }
+  .login-form-container {
+    padding: 2rem 1.5rem;
+  }
 }
 
-/* Animaciones específicas para los elementos */
-.animate__fadeInUp { animation-duration: 0.7s; }
-.animate__fadeInLeft { animation-duration: 0.6s; }
-.animate__fadeInRight { animation-duration: 0.6s; }
-.animate__fadeIn { animation-duration: 0.5s; }
-.animate__shakeX { animation-duration: 0.7s; }
+@media (max-width: 575.98px) {
+  .login-branding-col {
+    padding: 2rem 1rem;
+  }
+  .branding-logo-container {
+    max-width: 200px;
+    margin-bottom: 1rem;
+  }
+  .brand-title {
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+  }
+  .brand-subtitle {
+    font-size: 0.875rem;
+  }
+  .login-form-container {
+    padding: 1.5rem 1rem;
+  }
+}

@@ -1,57 +1,98 @@
-/* ==========================================================================
-   Estilos para Footer.css
-   ========================================================================== */
+/* === VARIABLES Y ESTILOS GENERALES === */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-.footer-container {
-  background-color: #16191c; /* Un negro un poco más suave que el negro puro */
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+:root {
+  --primary-color: #4f46e5;
+  --primary-hover: #6a5af9;
+  --background-dark: #111827;
+  --background-footer: #0d121d; /* Un tono ligeramente más oscuro y profundo para el footer */
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --border-color: #374151;
 }
 
-.footer-brand {
-  font-weight: 700;
-  font-size: 1.5rem;
-  letter-spacing: 1px;
-  /* Reutilizamos el gradiente del Header para consistencia de marca */
-  background: linear-gradient(90deg, #0d6efd, #6f42c1);
+.footer-container {
+  background-color: var(--background-footer);
+  border-top: 1px solid var(--border-color);
+  font-family: 'Inter', sans-serif;
+}
+
+/* === MARCA (LOGO DE TEXTO) === */
+.footer-brand-text {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  /* Gradiente sutil y elegante que va de un lavanda a blanco */
+  background: linear-gradient(90deg, #a69ef2, #f9fafb);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  margin-bottom: 0; /* Asegura que no haya margen extra */
 }
 
+/* === ENLACES === */
 .footer-link {
-  color: #adb5bd; /* Un gris claro para los enlaces */
+  color: var(--text-secondary);
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease-in-out;
 }
 
 .footer-link:hover {
-  color: #ffffff;
-  text-decoration: none;
-  padding-left: 5px; /* Pequeño movimiento al pasar el ratón */
+  color: var(--primary-hover);
+  padding-left: 4px; /* Efecto de desplazamiento sutil al pasar el cursor */
 }
 
-/* Estilos para los íconos de redes sociales */
+/* Enlace especial para los créditos del desarrollador */
+.footer-link-special {
+  color: var(--primary-color);
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.footer-link-special:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+/* === ÍCONOS DE REDES SOCIALES === */
+.footer-social-icons {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end; /* Alinea los íconos a la derecha */
+}
+
 .footer-social-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
-  font-size: 1rem;
+  background-color: var(--background-light); /* Fondo del ícono */
+  color: var(--text-secondary);
+  font-size: 0.9rem;
   transition: all 0.3s ease;
 }
 
 .footer-social-icon:hover {
-  background-color: #0d6efd; /* Color primario al pasar el ratón */
-  color: #ffffff;
+  background-color: var(--primary-color);
+  color: var(--text-primary);
   transform: translateY(-3px); /* Efecto de "levantarse" */
-  box-shadow: 0 4px 15px rgba(13, 110, 253, 0.4);
+  box-shadow: 0 5px 15px rgba(79, 70, 229, 0.4);
 }
 
+/* === OTROS ELEMENTOS === */
 .footer-divider {
-  border-color: rgba(255, 255, 255, 0.1);
-  margin-top: 2rem;
+  border-color: var(--border-color);
+  margin-top: 2.5rem;
+  margin-bottom: 0;
 }
+
+.footer-credits {
+  padding-top: 1.5rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+

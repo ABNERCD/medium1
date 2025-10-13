@@ -1,29 +1,57 @@
+import React, { useState, useEffect } from 'react';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import './Header.css';// Importa un CSS específico para el Header
+import './Header.css';
+// 1. Importamos el componente del logo reutilizable
+import { NewMediumLogo } from './NewMediumLogo';
 
 export function Header() {
+  // 2. Estado para detectar si el usuario ha hecho scroll
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Si el scroll vertical es mayor a 10px, activamos el estado
+      if (window.scrollY > 10) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    // Añadimos el listener cuando el componente se monta
+    window.addEventListener('scroll', handleScroll);
+
+    // Limpiamos el listener cuando el componente se desmonta
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
+    // 3. Añadimos una clase 'scrolled' dinámicamente
     <Navbar 
-      bg="dark" 
       variant="dark" 
       expand="lg" 
-      sticky="top" 
-      className="bg-opacity-75 backdrop-blur-md border-bottom border-secondary header-animated"
+      fixed="top" // Usamos fixed="top" para un mejor control del efecto
+      className={`main-header ${scrolled ? 'scrolled' : ''}`}
     >
       <Container>
         <LinkContainer to="/">
-          <Navbar.Brand className="fw-bold fs-4 brand-gradient">MEDIUM</Navbar.Brand>
+          <Navbar.Brand>
+            {/* 4. Usamos el componente del logo SVG */}
+            <NewMediumLogo />
+          </Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav className="align-items-lg-center">
             <LinkContainer to="/login">
-              <Nav.Link className="mx-lg-2">Iniciar Sesión</Nav.Link>
+              <Nav.Link className="nav-link-custom">Iniciar Sesión</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/login">
+            <LinkContainer to="/register">
               <Nav.Link>
-                <Button variant="primary" className="ms-lg-3 py-2 px-4 shadow-sm hover-scale-105 transition-all-03s">Registrarse</Button>
+                <Button className="register-button-header">Registrarse</Button>
               </Nav.Link>
             </LinkContainer>
           </Nav>
@@ -32,3 +60,4 @@ export function Header() {
     </Navbar>
   );
 }
+

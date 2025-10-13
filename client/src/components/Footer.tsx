@@ -1,8 +1,6 @@
-// Contenido MEJORADO para: src/components/Footer.tsx
-
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import './Footer.css'; // Importamos el CSS que crearemos a continuación
+import './Footer.css';
 
 export function Footer() {
   return (
@@ -11,14 +9,15 @@ export function Footer() {
         <Row className="gy-4">
           {/* Columna 1: Marca y Descripción */}
           <Col lg={4} md={6}>
-            <h5 className="footer-brand">MEDIUM</h5>
-            <p className="text-muted small">
+            {/* Reemplazamos el logo de imagen por un texto estilizado */}
+            <div className="footer-brand-text">MEDIUM</div>
+            <p className="text-muted small mt-3">
               Tu legado digital, brillante y seguro. Un espacio único para tus archivos, 
               recuerdos y voluntades más importantes.
             </p>
           </Col>
 
-          {/* Columna 2: Enlaces Rápidos (Opcional, puedes agregar más) */}
+          {/* Columna 2: Enlaces Rápidos */}
           <Col lg={2} md={6}>
             <h6 className="text-uppercase fw-bold mb-4">Legal</h6>
             <ul className="list-unstyled">
@@ -31,16 +30,12 @@ export function Footer() {
             </ul>
           </Col>
 
-          {/* Columna 3: Contacto (Opcional) */}
+          {/* Columna 3: Contacto */}
           <Col lg={3} md={6}>
              <h6 className="text-uppercase fw-bold mb-4">Contacto</h6>
-             <p className="small text-muted">
+             <p className="small text-muted d-flex align-items-center">
                 <i className="fas fa-envelope me-3"></i>
-                contacto@medium.com
-             </p>
-             <p className="small text-muted">
-                <i className="fas fa-phone me-3"></i>
-                +52 55 1234 5678
+                <span>contacto@medium.com</span>
              </p>
           </Col>
 
@@ -51,12 +46,6 @@ export function Footer() {
               <a href="#!" className="footer-social-icon me-2">
                 <i className="fab fa-twitter"></i>
               </a>
-              <a href="#!" className="footer-social-icon me-2">
-                <i className="fab fa-facebook-f"></i>
-              </a>
-              <a href="#!" className="footer-social-icon me-2">
-                <i className="fab fa-instagram"></i>
-              </a>
               <a href="#!" className="footer-social-icon">
                 <i className="fab fa-linkedin-in"></i>
               </a>
@@ -66,12 +55,17 @@ export function Footer() {
 
         <hr className="footer-divider" />
 
-        <Row>
-          <Col className="text-center text-muted small">
-            <p>&copy; {new Date().getFullYear()} MEDIUM. Todos los derechos reservados.</p>
+        {/* --- SECCIÓN DE CRÉDITOS --- */}
+        <Row className="text-center text-muted small footer-credits">
+          <Col md={6} className="text-md-start mb-2 mb-md-0">
+            &copy; {new Date().getFullYear()} MEDIUM. Concepto por Lic. Martinez Vargas Omar.
+          </Col>
+          <Col md={6} className="text-md-end">
+            Diseño y Desarrollo por <a href="https://www.linkedin.com/in/abner-chazaro-a81709143" target="_blank" rel="noopener noreferrer" className="footer-link-special">Abner Cházaro</a>.
           </Col>
         </Row>
       </Container>
     </footer>
   );
 }
+

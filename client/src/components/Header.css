@@ -1,82 +1,102 @@
-/* ==========================================================================
-   Estilos para Header.css
-   ========================================================================== */
-
-/* 1. Estilo principal para la barra de navegación (efecto cristal)
-   -------------------------------------------------------------------------- */
-/* Esta clase combina las propiedades que mencionaste: 'bg-opacity-75' y 'backdrop-blur-md'.
-  Usamos RGBA para el fondo oscuro con 75% de opacidad y backdrop-filter para el desenfoque.
-*/
-.navbar.bg-opacity-75.backdrop-blur-md {
-  background-color: rgba(25, 28, 32, 0.75) !important; /* Un color oscuro casi negro con transparencia */
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px); /* Para compatibilidad con Safari */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important; /* Borde sutil */
+/* === VARIABLES Y ESTILOS GENERALES DEL HEADER === */
+:root {
+  --primary-color: #4f46e5;
+  --background-dark: #111827;
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --border-color: #374151;
 }
 
-/* 2. Gradiente para el nombre de la marca (MEDIUM)
-   -------------------------------------------------------------------------- */
-/*
-  La clase '.brand-gradient' aplica un fondo de gradiente y luego lo "recorta"
-  para que solo sea visible a través del texto.
-*/
-.brand-gradient {
-  background: linear-gradient(90deg, #0d6efd, #6f42c1); /* Un gradiente de azul a morado */
-  -webkit-background-clip: text; /* Para navegadores WebKit (Chrome, Safari) */
-  background-clip: text;
-  color: transparent;
-  transition: filter 0.3s ease;
+.main-header {
+  background-color: transparent; /* El fondo inicial es transparente */
+  padding: 0.25rem 0; /* <-- AJUSTE: Barra aún más delgada */
+  border-bottom: 1px solid transparent; /* Borde inicial transparente */
+  transition: background-color 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
 }
 
-.brand-gradient:hover {
-  filter: brightness(1.2); /* Hace el gradiente un poco más brillante al pasar el ratón */
+/* --- ESTADO 'SCROLLED': Se activa con JavaScript al hacer scroll --- */
+.main-header.scrolled {
+  background-color: rgba(17, 24, 39, 0.8); /* Fondo oscuro semitransparente */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* 3. Clases de utilidad para animaciones y transiciones
-   -------------------------------------------------------------------------- */
-/*
-  Define la transición suave que mencionaste en la clase 'transition-all-03s'.
-*/
-.transition-all-03s {
-  transition: all 0.3s ease-in-out;
+/* === LOGO SVG EN EL HEADER === */
+.main-header .navbar-brand {
+  padding: 0;
+  display: flex;
+  align-items: center;
 }
 
-/*
-  Define el efecto de escala al pasar el ratón para 'hover-scale-105'.
-*/
-.hover-scale-105:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 25px -5px rgba(0, 123, 255, 0.4); /* Sombra azulada en hover */
+/* Ajustamos el tamaño y los colores del logo para el header */
+.main-header .medium-logo-svg {
+  width: 50px; /* <-- AJUSTE: Logo más pequeño */
+  height: 50px; /* <-- AJUSTE: Logo más pequeño */
+  transition: transform 0.3s ease;
+}
+.main-header .medium-logo-svg:hover {
+  transform: scale(1.05) rotate(5deg); /* Sutil animación al pasar el cursor */
 }
 
-/*
-  Animación de entrada para 'header-animated'.
-  Hace que la barra de navegación aparezca deslizándose desde arriba.
-*/
-.header-animated {
-  animation: slideInDown 0.7s ease-out forwards;
-}
-
-@keyframes slideInDown {
-  from {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-/* 4. Estilos adicionales para mejorar la apariencia (Opcional)
-   -------------------------------------------------------------------------- */
-.navbar-dark .nav-link {
-  color: rgba(255, 255, 255, 0.75); /* Color ligeramente más tenue para los enlaces */
+/* === ENLACES DE NAVEGACIÓN === */
+.nav-link-custom {
+  color: var(--text-secondary) !important;
+  font-weight: 500;
+  margin: 0 1rem 0 0.5rem; /* <-- AJUSTE: Aumentado el margen derecho para dar más espacio */
+  padding: 0.5rem 0 !important;
+  position: relative;
   transition: color 0.3s ease;
 }
 
-.navbar-dark .nav-link:hover,
-.navbar-dark .nav-link:focus {
-  color: #ffffff; /* Los enlaces se vuelven blancos al pasar el ratón */
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.5); /* Un ligero brillo */
+.nav-link-custom::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color);
+  transform: scaleX(0); /* La línea empieza invisible */
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
 }
+
+.nav-link-custom:hover {
+  color: var(--text-primary) !important;
+}
+
+.nav-link-custom:hover::after {
+  transform: scaleX(1); /* La línea aparece de izquierda a derecha */
+  transform-origin: left;
+}
+
+/* === BOTÓN DE REGISTRO === */
+.register-button-header {
+  background: var(--primary-color);
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem; /* <-- AJUSTE: Botón un poco más pequeño */
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  margin-left: 1rem;
+  color: white; /* Aseguramos que el texto del botón sea blanco */
+}
+
+.register-button-header:hover {
+  background-color: #4338ca;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3), 0 4px 6px -4px rgba(79, 70, 229, 0.3);
+  color: white;
+}
+
+/* Ajuste para el menú hamburguesa en móviles */
+.navbar-toggler {
+  border: 1px solid var(--border-color);
+}
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 0.25rem rgba(79, 70, 229, 0.25);
+}
+
