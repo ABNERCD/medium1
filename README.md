@@ -1,43 +1,43 @@
-# 🌟 MEDIUM (LexProcess) - Tu Legado Digital
+﻿# ðŸŒŸ MEDIUM (LexProcess) - Tu Legado Digital
 
-Plataforma integral web para la gestión segura de legados digitales, archivos, recuerdos y voluntades.
+Plataforma integral web para la gestiÃ³n segura de legados digitales, archivos, recuerdos y voluntades.
 
 ---
 
-## 🏗️ Arquitectura del Proyecto
+## ðŸ—ï¸ Arquitectura del Proyecto
 
-El proyecto está diseñado con una arquitectura cliente-servidor desacoplada:
+El proyecto estÃ¡ diseÃ±ado con una arquitectura cliente-servidor desacoplada:
 
 1. **Frontend (`client/`)**:
    - **Framework:** React 19 + TypeScript impulsado por Vite.
    - **Estilos:** React-Bootstrap + Bootswatch (Darkly) + Animate.css + Iconos FontAwesome.
-   - **Enrutamiento:** React Router DOM (v7) con rutas públicas y protegidas mediante `ProtectedRoute`.
-   - **Comunicación HTTP:** Axios (`axiosConfig.ts`) con interceptores para inyectar automáticamente el Bearer Token JWT y manejar expiración de sesiones (401).
+   - **Enrutamiento:** React Router DOM (v7) con rutas pÃºblicas y protegidas mediante `ProtectedRoute`.
+   - **ComunicaciÃ³n HTTP:** Axios (`axiosConfig.ts`) con interceptores para inyectar automÃ¡ticamente el Bearer Token JWT y manejar expiraciÃ³n de sesiones (401).
 
 2. **Backend (`server/`)**:
    - **Entorno:** Node.js + Express + TypeScript.
    - **Base de Datos:** MySQL / MariaDB mediante `mysql2/promise` con pool de conexiones.
-   - **Autenticación & Seguridad:** JSON Web Tokens (`jsonwebtoken`) y encriptación de contraseñas con `bcryptjs`.
+   - **AutenticaciÃ³n & Seguridad:** JSON Web Tokens (`jsonwebtoken`) y encriptaciÃ³n de contraseÃ±as con `bcryptjs`.
    - **Control de Acceso:** Middleware `protect` que valida tokens y extrae el usuario autenticado.
 
 3. **Base de Datos (`Medium.sql`)**:
    - Tablas `roles` (`admin`, `cliente`) y `usuarios`.
-   - Relación 1:N entre roles y usuarios con claves foráneas.
+   - RelaciÃ³n 1:N entre roles y usuarios con claves forÃ¡neas.
 
 ---
 
-## 🚀 Cómo Ejecutar el Proyecto
+## ðŸš€ CÃ³mo Ejecutar el Proyecto
 
-### Opción 1: Con un solo clic (Recomendado en Windows)
-Haz doble clic sobre el archivo **`iniciar.bat`** (ubicado en la raíz o dentro de `medium1/`). Este script:
-1. Comprueba si MySQL está activo (lo inicia automáticamente desde XAMPP si es necesario).
-2. Lanza el backend y el frontend simultáneamente.
-3. Abre automáticamente tu navegador en `http://localhost:5173`.
+### OpciÃ³n 1: Con un solo clic (Recomendado en Windows)
+Haz doble clic sobre el archivo **`iniciar.bat`** (ubicado en la raÃ­z o dentro de `medium1/`). Este script:
+1. Comprueba si MySQL estÃ¡ activo (lo inicia automÃ¡ticamente desde XAMPP si es necesario).
+2. Lanza el backend y el frontend simultÃ¡neamente.
+3. Abre automÃ¡ticamente tu navegador en `http://localhost:5173`.
 
-### Opción 2: Desde la terminal
+### OpciÃ³n 2: Desde la terminal
 Dentro de la carpeta `medium1`:
 ```bash
-# Iniciar ambos (backend y frontend simultáneos)
+# Iniciar ambos (backend y frontend simultÃ¡neos)
 npm run dev
 ```
 
@@ -54,22 +54,22 @@ npm run dev
 
 ---
 
-## 👥 Credenciales de Prueba
+## ðŸ‘¥ Credenciales de Prueba
 
-La base de datos cuenta con dos usuarios listos para iniciar sesión:
+La base de datos cuenta con dos usuarios listos para iniciar sesiÃ³n:
 
-| Rol | Correo Electrónico | Contraseña |
+| Rol | Correo ElectrÃ³nico | ContraseÃ±a |
 | :--- | :--- | :--- |
 | **Administrador** | `admin.prueba@lexprocess.com` | `admin_password_123` |
 | **Cliente** | `cliente.prueba@lexprocess.com` | `cliente_password_123` |
 
-También puedes registrar nuevos usuarios directamente desde el formulario de **Registro** en `/register`.
+TambiÃ©n puedes registrar nuevos usuarios directamente desde el formulario de **Registro** en `/register`.
 
 ---
 
-## 📡 Endpoints de la API
+## ðŸ“¡ Endpoints de la API
 
-- `GET /api` - Comprobación de estado del servidor.
+- `GET /api` - ComprobaciÃ³n de estado del servidor.
 - `POST /api/auth/register` - Registro de nuevos usuarios con rol cliente.
-- `POST /api/auth/login` - Inicio de sesión y generación de token JWT.
+- `POST /api/auth/login` - Inicio de sesiÃ³n y generaciÃ³n de token JWT.
 - `GET /api/auth/profile` - Perfil de usuario (Ruta protegida, requiere header `Authorization: Bearer <token>`).
