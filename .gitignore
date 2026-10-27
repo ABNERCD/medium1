@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+*.log
+# Datos locales de PostgreSQL
+server/.pgdata/
+# Archivos subidos por usuarios
+server/uploads/*
+!server/uploads/.gitkeep

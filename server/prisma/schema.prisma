@@ -1,0 +1,63 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  CLIENT
+}
+
+enum UserStatus {
+  ACTIVE
+  DECEASED
+}
+
+model User {
+  id            Int           @id @default(autoincrement())
+  email         String        @unique
+  password      String
+  role          Role          @default(CLIENT)
+  status        UserStatus    @default(ACTIVE)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  lockers       Locker[]
+  beneficiaries Beneficiary[]
+  files         File[]
+}
+
+model Locker {
+  id            Int      @id @default(autoincrement())
+  physical_code String   @unique
+  status        String   @default("AVAILABLE")
+  user_id       Int?
+  user          User?    @relation(fields: [user_id], references: [id], onDelete: SetNull)
+  createdAt     DateTime @default(now())
+}
+
+model Beneficiary {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  phone     String
+  user_id   Int
+  user      User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+}
+
+model File {
+  id             Int      @id @default(autoincrement())
+  original_name  String
+  encrypted_path String
+  mime_type      String
+  iv_hash        String
+  is_locked      Boolean  @default(true)
+  user_id        Int
+  user           User     @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  createdAt      DateTime @default(now())
+}
