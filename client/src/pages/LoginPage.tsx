@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Container, Row, Col, Form, Button, Card, Spinner, Alert, InputGroup } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button, Spinner, Alert, InputGroup } from 'react-bootstrap';
 import apiClient from '../api/axiosConfig';
 import './LoginPage.css';
 import 'animate.css';
 import { NewMediumLogo } from '../components/NewMediumLogo';
-// 1. Importamos la imagen del logo para la sección de branding
 import brandingLogoImage from '../assets/logo.png';
 
-// 2. Creamos un componente para mostrar el logo de imagen
 const BrandingLogo = () => (
   <div className="branding-logo-container">
     <img src={brandingLogoImage} alt="Medium Branding Logo" className="branding-logo-image" />
@@ -61,18 +59,14 @@ export function LoginPage() {
           {/* Columna Izquierda: Branding y Diseño */}
           <Col lg={7} className="d-none d-lg-flex flex-column justify-content-center align-items-center login-branding-col position-relative">
             <div className="branding-content text-center text-white animate__animated animate__fadeInLeft">
-              
-              {/* 3. Colocamos el logo de imagen */}
               <BrandingLogo />
-              
-              {/* 4. Mantenemos el título de texto */}
               <h1 className="display-4 fw-bolder brand-title">MEDIUM</h1>
               <p className="lead brand-subtitle mt-3">Tu legado digital, brillante y seguro.</p>
             </div>
             <div className="background-overlay"></div>
           </Col>
 
-          {/* Columna Derecha: Formulario de Login (se mantiene igual) */}
+          {/* Columna Derecha: Formulario de Login */}
           <Col lg={5} className="d-flex flex-column justify-content-center align-items-center login-form-col">
               <div className="login-form-container animate__animated animate__fadeInRight">
                 <div className="text-center mb-4">
@@ -106,13 +100,13 @@ export function LoginPage() {
                         required
                         className="login-input"
                       />
-                      <Button variant="outline-secondary" onClick={() => setShowPassword(!showPassword)} className="password-toggle-btn">
+                      <Button variant="outline-secondary" onClick={() => setShowPassword(!showPassword)} className="password-toggle-btn" type="button">
                         <i className={showPassword ? "fas fa-eye-slash" : "fas fa-eye"}></i>
                       </Button>
                     </InputGroup>
                   </Form.Group>
                   <div className="d-flex justify-content-end mb-4">
-                      <Link to="/forgot-password" className="login-link">¿Olvidaste tu contraseña?</Link>
+                      <span className="text-muted small">¿Olvidaste tu contraseña? Contacta al administrador</span>
                   </div>
                   <div className="d-grid gap-2">
                     <Button type="submit" disabled={loading} className="login-button">
@@ -130,4 +124,3 @@ export function LoginPage() {
     </div>
   );
 }
-

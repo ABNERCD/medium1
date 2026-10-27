@@ -1,5 +1,3 @@
-import React from 'react';
-
 // Nuevo componente de logo SVG, diseñado a medida para "MEDIUM"
 export const NewMediumLogo = () => (
   <svg 

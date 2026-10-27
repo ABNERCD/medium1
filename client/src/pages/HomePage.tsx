@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Button, Row, Col, Card, Accordion } from 'react-bootstrap';
 import './HomePage.css';
@@ -125,4 +124,3 @@ export function HomePage() {
     </div>
   );
 }
-
